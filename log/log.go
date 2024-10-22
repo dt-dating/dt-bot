@@ -4,7 +4,7 @@ import (
 	"os"
 
 	"github.com/sirupsen/logrus"
-	"github.com/Chigatul/dt_bot/config"
+	"github.com/Chigatul/dt_bot/configs"
 )
 
 // Logger defines a set of methods for writing application logs. Derived from and
@@ -39,18 +39,18 @@ type Logger interface {
 var defaultLogger *logrus.Logger
 
 func init() {
-	defaultLogger = newLogrusLogger(config.Config())
+	defaultLogger = newLogrusLogger(configs.Config())
 }
 
 
 // NewLogger returns a configured logrus instance
-func NewLogger(cfg config.Provider) *logrus.Logger {
+func NewLogger(cfg configs.Provider) *logrus.Logger {
 	return newLogrusLogger(cfg)
 }
 
 
 
-func newLogrusLogger(cfg config.Provider) *logrus.Logger {
+func newLogrusLogger(cfg configs.Provider) *logrus.Logger {
 
 	l := logrus.New()
 	
